@@ -10,6 +10,14 @@ bot.on('ready', () => {
 
 bot.login('NDk1NTYxNjkxMjE2NDc4MjI5.DpD6SQ._MBkONSVg8c9_rZxvL5-SzLC9BY');
 
+bot.on("guildMemberAdd", member =>{
+
+    member.guild.channels.find("name", "general").send('${member} a rejoint le discord !');
+    var role = member.guild.roles.find('name', 'SN');
+    member.addRole(role);
+
+})
+
 bot.on('message', message => {
     if(message.content === "ping"){
         message.reply("pong");
