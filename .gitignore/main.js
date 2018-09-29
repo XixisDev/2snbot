@@ -21,9 +21,18 @@ bot.on('message', message => {
         message.channel.sendEmbed(help_embed);
         console.log("Aide envoyée !");
 
-    } else if(message.content === prefix + "edplundig1"){
+    } else if(message.content === prefix + "edpg1"){
 
-        
+        try{
+            get('https://imgur.com/a/HeDZMqT').then(res =>{
+                const embedimg = new Discord.RichEmbed().setDescription('Tests').setImage(res.body.file).setColor("0x201F1F");
+                return message.channel.sendEmbed(embedimg);
+            })
+        } catch(err){
+
+            message.channel.send("Erreur !");
+
+        }
 
     }
 });
