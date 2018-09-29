@@ -13,15 +13,11 @@ bot.login('NDk1NTYxNjkxMjE2NDc4MjI5.DpD6SQ._MBkONSVg8c9_rZxvL5-SzLC9BY');
 bot.on("guildMemberAdd", member =>{
 
     member.guild.channels.find("name", "général").send(`${member} a rejoint le discord !`);
-    member.addRole('SN');
+    member.setRoles('name', 'SN');
 
 })
 
 bot.on('message', message => {
-    if(message.content === "ping"){
-        message.reply("pong");
-        console.log("Le bot a interprété et répondu au message");
-    }
 
     if(message.content === prefix + "help"){
         var help_embed = new Discord.RichEmbed().setColor("#01FEDC").addField("Commandes du bot :", "   ~help : Affiche la liste des commandes. \n   ~edtg1 : Affiche l'emploi du temps du groupe 1. \n   ~edtg2 : Affiche l'emploi du temps du groupe 2. \n   ~atrium : Envoie le lien d'Atrium. \n   ~pronote : Envoie le lien de Pronote. \n   ~cpro : Envoie le lien de CPro.");
