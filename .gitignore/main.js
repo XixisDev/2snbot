@@ -23,16 +23,7 @@ bot.on('message', message => {
 
     } else if(message.content === prefix + "edpg1"){
 
-        try{
-            get('https://imgur.com/a/HeDZMqT').then(res =>{
-                const embedimg = new Discord.RichEmbed().setDescription('Tests').setImage(res.body.file).setColor("0x201F1F");
-                return message.channel.sendEmbed(embedimg);
-            })
-        } catch(err){
-
-            message.channel.send("Erreur !");
-
-        }
+        message.channel.send("Emploi du temps du groupe 1", {files: ["./images/2SN Logo.jpg"]});
 
     }
 });
