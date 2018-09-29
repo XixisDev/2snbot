@@ -36,12 +36,12 @@ bot.on('message', message => {
 
     } else if(message.content === prefix + "pronote"){
 
-        var pronote_embed = new Discord.RichEmbed.setColor("#40BF48").addField("Lien vers Pronote : ", "https://0060002v.index-education.net/pronote/");
+        var pronote_embed = new Discord.RichEmbed().setColor("#40BF48").addField("Lien vers Pronote : ", "https://0060002v.index-education.net/pronote/");
         message.channel.sendEmbed(pronote_embed);
 
     } else if(message.content === prefix + "cpro"){
 
-        var cpro_embed = new Discord.RichEmbed.setColor("#FEFE3D").addField("Lien vers CPro : ", "https://www.cpro-sti.fr/0060002V/");
+        var cpro_embed = new Discord.RichEmbed().setColor("#FEFE3D").addField("Lien vers CPro : ", "https://www.cpro-sti.fr/0060002V/");
         message.channel.sendEmbed(cpro_embed);
 
     }
