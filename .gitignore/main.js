@@ -21,9 +21,9 @@ bot.on('message', message => {
         message.channel.sendEmbed(help_embed);
         console.log("Aide envoyée !");
 
-    } else if(message.content === prefix + "edpg1"){
+    } else if(message.content === prefix + "edtg1"){
 
-        message.channel.send("Emploi du temps du groupe 1", {files: ["./images/2SN Logo.jpg"]});
+        message.channel.send("Emploi du temps du groupe 1", {files: ["./edtg1.jpg"]});
 
     }
 });
