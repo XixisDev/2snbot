@@ -17,11 +17,14 @@ bot.on("guildMemberAdd", member =>{
 })
 
 bot.on('message', message => {
+    if(message.content === "ping"){
+        message.reply("pong");
+        console.log("Le bot a interprété et répondu au message");
+    }
 
     if(message.content === prefix + "help"){
         var help_embed = new Discord.RichEmbed().setColor("#01FEDC").addField("Commandes du bot :", "   ~help : Affiche la liste des commandes. \n   ~edtg1 : Affiche l'emploi du temps du groupe 1. \n   ~edtg2 : Affiche l'emploi du temps du groupe 2. \n   ~atrium : Envoie le lien d'Atrium. \n   ~pronote : Envoie le lien de Pronote. \n   ~cpro : Envoie le lien de CPro.");
         message.channel.sendEmbed(help_embed);
-        console.log("Aide envoyée !");
 
     } else if(message.content === prefix + "edtg1"){
 
@@ -29,7 +32,7 @@ bot.on('message', message => {
 
     } else if(message.content === prefix + "edtg2"){
 
-        message.channel.send("Emploi du temps du groupe 2");
+        message.channel.send("Emploi du temps du groupe 2", {files: ["./edtg2.jpg"]});
 
     } else if(message.content === prefix + "atrium"){
 
@@ -47,4 +50,4 @@ bot.on('message', message => {
         message.channel.sendEmbed(cpro_embed);
 
     }
-});
+})
