@@ -17,7 +17,7 @@ bot.on('message', message => {
     }
 
     if(message.content === prefix + "help"){
-        var help_embed = new Discord.RichEmbed().setColor("#01FEDC").addField("Commandes du bot :", "   ~help : Affiche la liste des commandes.");
+        var help_embed = new Discord.RichEmbed().setColor("#01FEDC").addField("Commandes du bot :", "   ~help : Affiche la liste des commandes. \n   ~edtg1 : Affiche l'emploi du temps du groupe 1");
         message.channel.sendEmbed(help_embed);
         console.log("Aide envoyée !");
 
