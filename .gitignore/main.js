@@ -17,13 +17,19 @@ bot.on("guildMemberAdd", member =>{
 })
 
 bot.on('message', message => {
-    if(message.content === "ping"){
-        message.reply("pong");
-        console.log("Le bot a interprété et répondu au message");
-    }
 
-    if(message.content === prefix + "help"){
-        var help_embed = new Discord.RichEmbed().setColor("#01FEDC").addField("Commandes du bot :", "   ~help : Affiche la liste des commandes. \n   ~edtg1 : Affiche l'emploi du temps du groupe 1. \n   ~edtg2 : Affiche l'emploi du temps du groupe 2. \n   ~atrium : Envoie le lien d'Atrium. \n   ~pronote : Envoie le lien de Pronote. \n   ~cpro : Envoie le lien de CPro.");
+     if(message.content === prefix + "help"){
+        var help_embed = new Discord.RichEmbed()
+        .setColor("#01FEDC")
+        .addField("Commandes du bot :", "   ~help : Affiche la liste des commandes.")
+        .addField("   ~edtg1 : Affiche l'emploi du temps du groupe 1.") 
+        .addField("   ~edtg2 : Affiche l'emploi du temps du groupe 2.")
+        .addField("   ~atrium : Envoie le lien d'Atrium.")
+        .addField("   ~pronote : Envoie le lien de Pronote.")
+        .addField("   ~cpro : Envoie le lien de CPro.")
+        .addField("Commandes admins :", "   ~clear [lignes] : Supprime les messages dans un canal.")
+        .addField("")
+        .setFooter("Bot fait par Xixis_");
         message.channel.sendEmbed(help_embed);
 
     } else if(message.content === prefix + "edtg1"){
@@ -48,6 +54,31 @@ bot.on('message', message => {
 
         var cpro_embed = new Discord.RichEmbed().setColor("#FEFE3D").addField("Lien vers CPro : ", "https://www.cpro-sti.fr/0060002V/");
         message.channel.sendEmbed(cpro_embed);
+
+    } else if(message.content.startsWith === prefix + "clear"){
+
+        if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")){
+    
+            message.reply("Tu n'as pas la permission.");
+        } else {
+
+            let args = message.content.split(" ").slice(1);
+
+            if(!args[0]){
+
+                message.reply("Il faut de préciser le nombre de lignes à supprimer (" + prefix + "clear [lignes]).");
+
+            } else {
+
+                message.channel.bulkDelete(args[0]).then(() => {
+
+                    message.channel.send(`${args[0]} messages ont été supprimés.`);
+
+                })
+
+            }
+
+        }
 
     }
 })
