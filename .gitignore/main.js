@@ -27,9 +27,7 @@ bot.on('message', message => {
         .addField("   ~atrium : Envoie le lien d'Atrium.")
         .addField("   ~pronote : Envoie le lien de Pronote.")
         .addField("   ~cpro : Envoie le lien de CPro.")
-        .addField("Commandes admins :", "   ~clear [lignes] : Supprime les messages dans un canal.")
-        .addField("")
-        .setFooter("Bot fait par Xixis_");
+        .addField("Commandes admins :", "   ~clear [lignes] : Supprime les messages dans un canal.");
         message.channel.sendEmbed(help_embed);
 
     } else if(message.content === prefix + "edtg1"){
