@@ -53,7 +53,7 @@ bot.on('message', message => {
         var cpro_embed = new Discord.RichEmbed().setColor("#FEFE3D").addField("Lien vers CPro : ", "https://www.cpro-sti.fr/0060002V/");
         message.channel.sendEmbed(cpro_embed);
 
-    } else if(message.content === prefix + "clear"){
+    } else if(message.content.startWith(prefix + "clear")){
         if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGE")) return message.channel.send("Vous n'avez pas la permission d'utiliser cette commande !");
             
         let args = message.content.split(" ").slice(1);
