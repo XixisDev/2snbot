@@ -54,12 +54,15 @@ bot.on('message', message => {
         message.channel.sendEmbed(cpro_embed);
 
     } else if(message.content === prefix + "clear"){
+        if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGE")) return message.channel.send("Vous n'avez pas la permission d'utiliser cette commande !");
+            
+        let args = message.content.split(" ").slice(1);
 
-        message.channel.bulkDelete(150).then(() =>{
-
-            message.channel.send("150 messages ont été supprimés.");
-
+        if(args >= 100) return message.channel.send("Vous ne pouvez pas clear plus de 100 messages en une fois.")
+            
+        if(!args[0]) return message.channel.send("Vous n'avez pas précisé le nombre de messages à supprimer.")
+        message.channel.bulkDelete(args[0]).then(() => {
+            message.channel.send(`${args[0]} messages ont été supprimés !`);
         })
-
     }
 })
