@@ -53,30 +53,13 @@ bot.on('message', message => {
         var cpro_embed = new Discord.RichEmbed().setColor("#FEFE3D").addField("Lien vers CPro : ", "https://www.cpro-sti.fr/0060002V/");
         message.channel.sendEmbed(cpro_embed);
 
-    } else if(message.content.startsWith === prefix + "clear"){
+    } else if(message.content === prefix + "clear"){
 
-        if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")){
-    
-            message.reply("Tu n'as pas la permission.");
-        } else {
+        message.channel.bulkDelete(150).then(() =>{
 
-            let args = message.content.split(" ").slice(1);
+            message.channel.send("150 messages ont été supprimés.");
 
-            if(!args[0]){
-
-                message.reply("Il faut de préciser le nombre de lignes à supprimer (" + prefix + "clear [lignes]).");
-
-            } else {
-
-                message.channel.bulkDelete(args[0]).then(() => {
-
-                    message.channel.send(`${args[0]} messages ont été supprimés.`);
-
-                })
-
-            }
-
-        }
+        })
 
     }
 })
