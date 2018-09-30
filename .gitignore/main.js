@@ -53,16 +53,21 @@ bot.on('message', message => {
         var cpro_embed = new Discord.RichEmbed().setColor("#FEFE3D").addField("Lien vers CPro : ", "https://www.cpro-sti.fr/0060002V/");
         message.channel.sendEmbed(cpro_embed);
 
-    } else if(message.content.startWith(prefix + "clear")){
-        if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGE")) return message.channel.send("Vous n'avez pas la permission d'utiliser cette commande !");
-            
-        let args = message.content.split(" ").slice(1);
+    } else if(message.content === prefix + "clear"){
 
-        if(args >= 100) return message.channel.send("Vous ne pouvez pas clear plus de 100 messages en une fois.")
-            
-        if(!args[0]) return message.channel.send("Vous n'avez pas précisé le nombre de messages à supprimer.")
-        message.channel.bulkDelete(args[0]).then(() => {
-            message.channel.send(`${args[0]} messages ont été supprimés !`);
-        })
+        if(message.member.hasPermission("MANAGE_MESSAGES")){
+
+            message.channel.fetchMessage().then(messages =>{
+
+                message.channel.bulkDelete(messages);
+                
+                message.channel.send("Tous les messages ont été supprimé.");
+                console.log("Suppression de tous les messages.");
+
+            })
+
+        }
+
     }
+
 })
