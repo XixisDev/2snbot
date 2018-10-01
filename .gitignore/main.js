@@ -29,7 +29,7 @@ bot.on('message', message => {
         .addField("   ~pronote : Envoie le lien de Pronote.")
         .addField("   ~cpro : Envoie le lien de CPro.")
         .addField("Commandes admins :", "   ~clear : Supprime les messages dans un canal.")
-        .setFooter("Bot créer par Xixis_");
+        .setFooter("Bot créé par Xixis_");
         message.channel.sendEmbed(help_embed);
 
     } else if(message.content === prefix + "edtg1"){
@@ -58,6 +58,9 @@ bot.on('message', message => {
     } else if (message.content == prefix + "clear") {
 
         if (message.channel.type == 'text') {
+            
+            if(message.member.hasPermission("MANAGE_MESSAGES")){
+            
           message.channel.fetchMessages()
             .then(messages => {
               message.channel.bulkDelete(messages);
@@ -66,6 +69,11 @@ bot.on('message', message => {
             })
             .catch(err => {
             });
+        } else {
+
+            message.channel.send("Vous n'avez pas la permission.");
+
+        }
         }
       }
 
