@@ -14,7 +14,7 @@ bot.login('NDk1NTYxNjkxMjE2NDc4MjI5.DpD6SQ._MBkONSVg8c9_rZxvL5-SzLC9BY');
 
 bot.on("guildMemberAdd", member =>{
 
-    member.guild.channels.find("name", "général").send(`${member} a rejoint le discord !`);
+    member.guild.channels.find("name", "arriver").send(`${member} a rejoint le discord !`);
 
 })
 
@@ -30,7 +30,7 @@ bot.on('message', message => {
         .addField("   ~pronote : Envoie le lien de Pronote.")
         .addField("   ~cpro : Envoie le lien de CPro.")
         .addField("Commandes admins :", "   ~clear : Supprime les messages dans un canal.")
-        .setFooter("Bot créer par Xixis_");
+        .setFooter("Bot créée par Xixis_");
         message.channel.sendEmbed(help_embed);
 
     } else if(message.content === prefix + "edtg1"){
@@ -56,8 +56,8 @@ bot.on('message', message => {
         var cpro_embed = new Discord.RichEmbed().setColor("#FEFE3D").addField("Lien vers CPro : ", "https://www.cpro-sti.fr/0060002V/");
         message.channel.sendEmbed(cpro_embed);
 
-    } else if (message.content == prefix + "clear") {
-         if(!message.author.hasPermission("MANAGE_MESSAGES")) return;
+    } else if (messsage.content == prefix + "clear") {
+         if(!message.member.hasPermission("MANAGE_MESSAGES")) return;
         if (message.channel.type == 'text') {
           message.channel.fetchMessages()
             .then(messages => {
