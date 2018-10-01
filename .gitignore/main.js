@@ -57,7 +57,7 @@ bot.on('message', message => {
         message.channel.sendEmbed(cpro_embed);
 
     } else if (message.content == prefix + "clear") {
-         if(!message.author.hasPermission("MANAGE_MESSAGE")) return;
+         if(!message.author.hasPermission("MANAGE_MESSAGES")) return;
         if (message.channel.type == 'text') {
           message.channel.fetchMessages()
             .then(messages => {
